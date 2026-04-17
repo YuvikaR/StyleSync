@@ -890,25 +890,25 @@ updateRecommendations();
 const COLOR_MOOD_IMAGES = {
   '0': { // White
     'Minimal':    'https://i.pinimg.com/736x/a2/f3/fb/a2f3fba50cf698bc7f31ad07109c90df.jpg',
-    'Streetwear': 'color/c2.png',
-    'Formal':     'color/c1.png',
+    'Streetwear': 'c2.png',
+    'Formal':     'c1.png',
     'Luxury':     'https://i.pinimg.com/1200x/ce/33/fe/ce33fe6186d7c6dc9b387b67536e80de.jpg',
   },
   '1': { // Beige/Cream
     'Minimal':    'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&q=80',
     'Streetwear': 'https://i.pinimg.com/736x/09/30/ff/0930ff118be7806328fc7d0fea8f23bb.jpg',
     'Formal':     'https://i.pinimg.com/736x/26/f0/7e/26f07efb06bfae296e9ca38caaa86dc1.jpg',
-    'Luxury':     'color/c3.png',
+    'Luxury':     'c3.png',
   },
   '2': { // Dusty Pink
     'Minimal':    'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&q=80',
     'Streetwear': 'https://i.pinimg.com/1200x/54/74/a3/5474a3e6dffde03ba303e51c3734fd0d.jpg',
     'Formal':     'https://i.pinimg.com/736x/ae/9c/14/ae9c14b15bf23805affc3efb6176abf2.jpg',
-    'Luxury':     'color/c4.png',
+    'Luxury':     'c4.png',
   },
   '3': { // Baby Blue
     'Minimal':    'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=400&q=80',
-    'Streetwear': 'color/c5.png',
+    'Streetwear': 'c5.png',
     'Formal':     'https://i.pinimg.com/1200x/17/2c/0e/172c0e6801962f865ff5910a81bbba23.jpg',
     'Luxury':     'https://i.pinimg.com/736x/5c/97/c6/5c97c60fbb34c275522b333bbe921ab3.jpg',
   },
@@ -944,7 +944,7 @@ const COLOR_MOOD_IMAGES = {
   },
   '9': { // Dark Teal
     'Minimal':    'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=400&q=80',
-    'Streetwear': 'color/c6.png',
+    'Streetwear': 'c6.png',
     'Formal':     'https://i.pinimg.com/736x/be/37/f6/be37f6548b1747124c7c1fd452e79abd.jpg',
     'Luxury':     'https://images.unsplash.com/photo-1519689680058-324335c77eba?w=400&q=80',
   },
@@ -974,7 +974,7 @@ const COLOR_MOOD_IMAGES = {
   },
   '14': { // Deep Maroon
     'Minimal':    'https://images.unsplash.com/photo-1519689680058-324335c77eba?w=400&q=80',
-    'Streetwear': 'color/c8.png',
+    'Streetwear': 'c8.png',
     'Formal':     'https://i.pinimg.com/736x/32/39/88/32398835a608178e8acffdc3a63cc56c.jpg',
     'Luxury':     'https://i.pinimg.com/736x/d1/0c/6d/d10c6dcf320021245144f9f1c2f26dac.jpg',
   },
@@ -982,7 +982,7 @@ const COLOR_MOOD_IMAGES = {
     'Minimal':    'https://images.unsplash.com/photo-1500840216050-6ffa99d75160?w=400&q=80',
     'Streetwear': 'https://i.pinimg.com/736x/83/96/4b/83964b56ea89f59f4de2ee0fcc04cde7.jpg',
     'Formal':     'https://i.pinimg.com/1200x/ec/b4/14/ecb414d75b672fbadf711f3287393785.jpg',
-    'Luxury':     'color/c7.png',
+    'Luxury':     'c7.png',
   },
 };
 
