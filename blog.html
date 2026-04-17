@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<title>StyleSync - Your Digital Personal Stylist</title>
+<link rel="icon" type="image/png" href="Home_images/logo.png">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="color.css">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1f1f1f", // Charcoal
+                        "accent": "#D4AF37", // Soft Gold
+                        "background-light": "#FDFCF8", // Ivory
+                        "background-dark": "#191919",
+                        "brown": "#5D4037",
+                        "second":"#E8B4B8"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+        
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #F1D37E 100%);
+        }
+        
+        @keyframes upIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;            /* must be 1 */
+    transform: translateY(0);
+  }
+}
+ .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-shadow-subtle {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        body {
+            background-color: #f9f9f9;
+            color: #1a1c1c;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .designer-card {
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .carousel-container {
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+        }
+        .carousel-item button {
+        background-color: #f7e8b5;
+        transition: all 0.5s ease-out;
+        }
+
+        .carousel-item button:hover {
+        background-color: #dbcfb2;
+        color: #584400;
+        transform: translateY(-4px);
+        letter-spacing: 0.25em;
+        box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+        .carousel-item {
+            scroll-snap-align: start;
+            flex: 0 0 auto;
+        }
+        .font-headline { font-family: "Newsreader", serif; }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-primary dark:text-slate-100 font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+
+<!-- ========== HEADER ========== -->
+<header id="main-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+    <div id="nav-container" class="flex justify-between items-center py-3 px-6 rounded-full border border-white/10 shadow-lg bg-white/10 backdrop-blur-md transition-all duration-300">
+      
+      <a class="flex-none" href="index.html" aria-label="Style Sync">
+        <img src="Home_images/logo.png" alt="Logo" class="w-6 h-10" />
+      </a>
+
+      <div class="flex items-center gap-8">
+        <nav class="hidden md:flex items-center gap-8">
+          <a class="text-primary/70 text-xs font-bold uppercase tracking-widest hover:text-accent hover:underline dark:text-white/60 transition-colors" href="index.html">HOME</a>
+          <a class="text-primary/70 text-xs font-bold uppercase tracking-widest hover:text-accent hover:underline dark:text-white/60 transition-colors" href="Outfit.html">OUTFIT AI</a>
+          <a class="text-primary/70 text-xs font-bold uppercase tracking-widest hover:text-accent hover:underline dark:text-white/60 transition-colors" href="color.html">COLOR MATCH</a>
+          <a class="text-primary text-xs font-bold uppercase tracking-widest hover:text-accent hover:underline  dark:text-white transition-colors" href="#">TRENDS</a>
+        </nav>
+
+       <!-- ========== Login Button (shown when logged OUT) ========== -->
+<button
+  id="login-btn"
+  onclick="openLogin()"
+  class="bg-primary dark:bg-white text-white dark:text-primary px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest ml-4">
+  Login
+</button>
+
+<!-- ========== User Profile (shown when logged IN) ========== -->
+<div id="user-profile"
+  class="hidden items-center gap-3 pl-4 border-l border-white/10">
+  <div class="text-right hidden sm:block">
+    <p id="user-name"
+      class="text-[9px] font-black uppercase tracking-tighter text-primary dark:text-white leading-none">
+      <!-- filled by JS -->
+    </p>
+    <p id="user-role"
+      class="text-[8px] font-bold text-accent uppercase tracking-widest">
+      <!-- filled by JS -->
+    </p>
+  </div>
+
+  <!-- Avatar + dropdown trigger -->
+  <div class="relative">
+    <button
+      id="avatar-btn"
+      onclick="toggleProfileMenu()"
+      class="size-10 rounded-full border-2 border-accent overflow-hidden hover:scale-105 transition-transform bg-primary/20 flex items-center justify-center">
+      <span id="avatar-initials"
+        class="text-[11px] font-black text-white uppercase tracking-wider">
+        <!-- filled by JS -->
+      </span>
+    </button>
+
+    <!-- Dropdown -->
+    <div id="profile-menu"
+      class="hidden absolute right-0 top-12 w-44 bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-700 rounded-2xl shadow-xl overflow-hidden z-50">
+      <a href="profile.html"
+        class="flex items-center gap-2 px-4 py-3 text-[11px] font-semibold uppercase tracking-widest text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+        <span class="material-symbols-outlined text-[16px]">person</span>
+        My Profile
+      </a>
+      <a href="wardrobe.html"
+        class="flex items-center gap-2 px-4 py-3 text-[11px] font-semibold uppercase tracking-widest text-stone-700 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+        <span class="material-symbols-outlined text-[16px]">checkroom</span>
+        Wardrobe
+      </a>
+      <hr class="border-stone-200 dark:border-stone-700">
+      <button
+        onclick="handleLogout()"
+        class="w-full flex items-center gap-2 px-4 py-3 text-[11px] font-semibold uppercase tracking-widest text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors">
+        <span class="material-symbols-outlined text-[16px]">logout</span>
+        Sign Out
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== Theme + Menu buttons ========== -->
+<button id="theme-btn" type="button"
+  class="flex justify-center items-center size-9 rounded-full hover:bg-white/10 transition-all">
+  <span class="material-symbols-outlined text-primary dark:text-white">dark_mode</span>
+</button>
+
+<button type="button"
+  class="md:hidden size-8 flex justify-center items-center text-white bg-brown rounded-lg">
+  <span class="material-symbols-outlined">menu</span>
+</button>
+
+<!-- ========== Login / Register Modal ========== -->
+<div id="login-modal" class="fixed inset-0 z-[100] hidden items-center justify-center">
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-md" onclick="closeLogin()"></div>
+  <div class="relative w-full max-w-md bg-[#1a1208] mt-80 rounded-3xl overflow-hidden shadow-2xl border border-[#3a2818]" style="animation: authFadeUp 0.45s cubic-bezier(.22,1,.36,1) both;">
+
+    <!-- Close -->
+    <button onclick="closeLogin()" class="absolute top-4 right-4 z-10 size-8 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 transition-colors text-white">
+      <span class="material-symbols-outlined text-[18px]">close</span>
+    </button>
+
+    <!-- Decorative blob -->
+    <div style="position:absolute;width:260px;height:260px;right:-40px;top:50%;transform:translateY(-50%);background:radial-gradient(ellipse at 40% 40%,#c9944e 0%,#7a4e2a 40%,#3a2010 80%,transparent 100%);border-radius:60% 40% 70% 30%/50% 60% 40% 50%;filter:blur(2px);opacity:0.35;animation:morphBlob 9s ease-in-out infinite alternate;pointer-events:none;z-index:0;"></div>
+
+    <div style="position:relative;z-index:1;padding:40px 38px 32px;">
+
+      <!-- Eyebrow + logo -->
+      <p style="font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:#c9a96e;font-family:'Jost',sans-serif;margin-bottom:6px;opacity:0.85;">The Digital Atelier</p>
+
+      <!-- Tab switcher -->
+      <div style="display:flex;gap:0;margin-bottom:28px;border-bottom:1px solid #3a2818;">
+        <button id="auth-tab-login" onclick="switchAuthTab('login')" style="padding:8px 0;margin-right:24px;font-family:'Jost',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;background:none;border:none;cursor:pointer;color:#c9a96e;border-bottom:2px solid #c9a96e;transition:all 0.2s;">Sign In</button>
+        <button id="auth-tab-register" onclick="switchAuthTab('register')" style="padding:8px 0;font-family:'Jost',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;background:none;border:none;cursor:pointer;color:#5a4a3a;border-bottom:2px solid transparent;transition:all 0.2s;">Create Account</button>
+      </div>
+
+      <!-- ── LOGIN PANEL ── -->
+      <div id="auth-panel-login">
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:#f0e8df;line-height:1.1;margin-bottom:4px;">Welcome</h2>
+        <p style="font-size:0.75rem;color:#8a7a6e;margin-bottom:24px;font-family:'Jost',sans-serif;">Access your curated style portfolio</p>
+
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:#8a7a6e;font-family:'Jost',sans-serif;margin-bottom:6px;">Email Address</label>
+          <div class="auth-field-row" id="login-email-row">
+            <input type="email" id="login-email" placeholder="atelier@stylesync.com" autocomplete="email" class="auth-input" />
+          </div>
+        </div>
+
+        <div style="margin-bottom:6px;">
+          <label style="display:block;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:#8a7a6e;font-family:'Jost',sans-serif;margin-bottom:6px;">Password</label>
+          <div class="auth-field-row" id="login-pass-row">
+            <input type="password" id="login-password" placeholder="••••••••" autocomplete="current-password" class="auth-input" />
+            <button class="auth-toggle-pass" onclick="authTogglePass('login-password','login-toggle-btn')" id="login-toggle-btn">Show</button>
+          </div>
+          <a href="#" style="display:block;text-align:right;font-size:0.68rem;color:#8a7a6e;margin-top:6px;text-decoration:none;font-family:'Jost',sans-serif;letter-spacing:0.06em;" onclick="showAuthToast('Password reset link sent to your inbox.'); return false;">Forgot?</a>
+        </div>
+
+        <button onclick="handleSignIn()" class="auth-btn-primary" style="margin-top:18px;margin-bottom:18px;"><span>Sign In</span></button>
+
+        <div class="auth-divider">or continue with</div>
+
+        <button onclick="showAuthToast('Redirecting to Google…')" class="auth-btn-google">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          Continue with Google
+        </button>
+
+        <p style="text-align:center;font-size:0.72rem;color:#8a7a6e;font-family:'Jost',sans-serif;">New here? <a href="#" onclick="switchAuthTab('register');return false;" style="color:#c9a96e;font-weight:500;text-decoration:none;">Create Account</a></p>
+      </div>
+
+      <!-- ── REGISTER PANEL ── -->
+      <div id="auth-panel-register" style="display:none;">
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:#f0e8df;line-height:1.1;margin-bottom:4px;">The Atelier<br>awaits</h2>
+        <p style="font-size:0.75rem;color:#8a7a6e;margin-bottom:24px;font-family:'Jost',sans-serif;">Enter your creative space</p>
+
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:#8a7a6e;font-family:'Jost',sans-serif;margin-bottom:6px;">Username</label>
+          <div class="auth-field-row">
+            <input type="text" id="reg-username" placeholder="Email or Username" autocomplete="username" class="auth-input" />
+          </div>
+        </div>
+
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:#8a7a6e;font-family:'Jost',sans-serif;margin-bottom:6px;">Password</label>
+          <div class="auth-field-row">
+            <input type="password" id="reg-password" placeholder="••••••••" autocomplete="new-password" class="auth-input" />
+            <button class="auth-toggle-pass" onclick="authTogglePass('reg-password','reg-toggle-btn1')" id="reg-toggle-btn1">Show</button>
+          </div>
+        </div>
+
+        <div style="margin-bottom:18px;">
+          <label style="display:block;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:#8a7a6e;font-family:'Jost',sans-serif;margin-bottom:6px;">Confirm Password</label>
+          <div class="auth-field-row">
+            <input type="password" id="reg-confirm" placeholder="••••••••" autocomplete="new-password" class="auth-input" />
+            <button class="auth-toggle-pass" onclick="authTogglePass('reg-confirm','reg-toggle-btn2')" id="reg-toggle-btn2">Show</button>
+          </div>
+        </div>
+
+        <button onclick="handleRegister()" class="auth-btn-primary" style="margin-bottom:18px;"><span>Create Account</span></button>
+
+        <div class="auth-divider">or continue with</div>
+
+        <button onclick="showAuthToast('Redirecting to Google…')" class="auth-btn-google">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          Google
+        </button>
+
+        <p style="text-align:center;font-size:0.72rem;color:#8a7a6e;font-family:'Jost',sans-serif;">Already in the collective? <a href="#" onclick="switchAuthTab('login');return false;" style="color:#c9a96e;font-weight:500;text-decoration:none;">Sign In</a></p>
+      </div>
+
+    </div><!-- /inner -->
+  </div><!-- /modal card -->
+</div>
+
+<style>
+@keyframes authFadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes morphBlob {
+  0%   { border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; }
+  33%  { border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%; }
+  66%  { border-radius: 70% 30% 50% 50% / 40% 70% 30% 60%; }
+  100% { border-radius: 50% 50% 40% 60% / 55% 45% 65% 35%; }
+}
+.auth-field-row {
+  display:flex; align-items:center;
+  background:#2e2018; border:1px solid #4a3828; border-radius:8px;
+  transition:border-color 0.2s, box-shadow 0.2s; overflow:hidden;
+}
+.auth-field-row:focus-within { border-color:#e8417a; box-shadow:0 0 0 3px #e8417a33; }
+.auth-input {
+  flex:1; background:transparent; border:none; outline:none;
+  padding:11px 14px; font-size:0.85rem; color:#f0e8df;
+  font-family:'Jost',sans-serif; font-weight:300;
+}
+.auth-input::placeholder { color:#5a4a3a; }
+.auth-toggle-pass {
+  padding:0 14px; background:transparent; border:none; cursor:pointer;
+  color:#8a7a6e; font-size:0.68rem; letter-spacing:0.1em;
+  text-transform:uppercase; font-family:'Jost',sans-serif; transition:color 0.2s;
+}
+.auth-toggle-pass:hover { color:#f0e8df; }
+.auth-btn-primary {
+  width:100%; padding:13px;
+  background:linear-gradient(135deg,#e8417a 0%,#c4245d 100%);
+  border:none; border-radius:8px; color:#fff;
+  font-family:'Jost',sans-serif; font-size:0.78rem; font-weight:500;
+  letter-spacing:0.2em; text-transform:uppercase; cursor:pointer;
+  position:relative; overflow:hidden;
+  transition:transform 0.15s, box-shadow 0.2s;
+  box-shadow:0 4px 20px #e8417a44;
+}
+.auth-btn-primary:hover { transform:translateY(-1px); box-shadow:0 6px 28px #e8417a66; }
+.auth-btn-primary:active { transform:translateY(1px); }
+.auth-btn-primary span { position:relative; z-index:1; }
+.auth-divider {
+  display:flex; align-items:center; gap:12px; margin-bottom:16px;
+  color:#8a7a6e; font-size:0.65rem; letter-spacing:0.14em;
+  text-transform:uppercase; font-family:'Jost',sans-serif;
+}
+.auth-divider::before,.auth-divider::after { content:''; flex:1; height:1px; background:#3a2818; }
+.auth-btn-google {
+  width:100%; display:flex; align-items:center; justify-content:center; gap:10px;
+  padding:11px; background:#1e1408; border:1px solid #3a2818; border-radius:8px;
+  color:#f0e8df; font-family:'Jost',sans-serif; font-size:0.8rem; font-weight:400;
+  letter-spacing:0.04em; cursor:pointer; margin-bottom:20px;
+  transition:background 0.2s,border-color 0.2s,transform 0.15s;
+}
+.auth-btn-google:hover { background:#2a1c0e; border-color:#5a3e28; transform:translateY(-1px); }
+#auth-toast {
+  position:fixed; bottom:28px; left:50%;
+  transform:translateX(-50%) translateY(80px);
+  background:#1a1208; border:1px solid #e8417a; color:#f0e8df;
+  padding:12px 24px; border-radius:8px; font-family:'Jost',sans-serif;
+  font-size:0.8rem; letter-spacing:0.05em; z-index:200;
+  transition:transform 0.4s cubic-bezier(.22,1,.36,1), opacity 0.4s;
+  opacity:0; white-space:nowrap; pointer-events:none;
+}
+#auth-toast.show { transform:translateX(-50%) translateY(0); opacity:1; }
+</style>
+<div id="auth-toast"></div>
+  </nav>
+</header>
+
+<!-- SECTION1 -->
+<section class="relative w-full h-screen flex flex-col md:flex-row bg-white dark:bg-[#0f0f0f] transition-colors duration-500">
+  <div class="w-full md:w-1/2 h-full flex flex-col justify-center px-8 md:px-20 lg:px-32 relative z-10">
+    <div class="space-y-6">
+      <!-- Tagline -->
+      <div class="text-[10px] font-bold uppercase tracking-[0.4em] text-[#c9a84c]">
+        StyleSync • Issue 24
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-[58px] md:text-[6.5vw] lg:text-[88px] font-serif font-bold leading-[0.88] tracking-[-0.02em] text-black dark:text-white animate-upIn" 
+    style="animation-delay: 550ms;">
+  
+  <span class="block font-serif font-light italic text-gray-400 dark:text-gray-400 text-[0.4em] mb-1">
+    The
+  </span>
+
+  <span class="inline-block text-[#e0c47a] italic relative">
+    Trend
+    <span class="absolute bottom-[-6px] left-0 right-0 h-[2px] bg-gradient-to-r from-[#e0c47a] via-[#e0c47a] to-transparent animate-lineGrow origin-left"
+          style="animation-delay: 1200ms;"></span>
+  </span>
+
+  <span class="block">
+    Report<span class="text-[#e0c47a]">.</span>
+  </span>
+</h1>
+
+
+      <!-- Body text -->
+      <p class="max-w-md text-slate-500 dark:text-slate-400 text-lg font-light leading-relaxed">
+        A curated analysis of this season's most influential shifts in global fashion and digital culture.
+      </p>
+    </div>
+
+    <!-- CTA button -->
+    <div class="flex flex-wrap pt-4">
+      <a
+        href="https://heuritech.com/fashion-trends-2026/" target="_blank"
+        class="outfit flex min-w-[100px] cursor-pointer items-center justify-center rounded-xl h-14 px-6 bg-[#D4AF37] text-white text-base font-bold shadow-xl hover:translate-y-[-2px] transition-all"
+      >
+        <span class="truncate">Read Report</span>
+      </a>
+    </div>
+
+    <!-- Stats strip -->
+    <div class="absolute bottom-12 flex gap-12 border-t border-slate-100 dark:border-white/5 pt-8 w-2/3">
+      <div>
+        <p class="text-[9px] uppercase tracking-widest text-slate-400 mb-1">Growth</p>
+        <p class="text-xl font-medium dark:text-white">+24%</p>
+      </div>
+      <div>
+        <p class="text-[9px] uppercase tracking-widest text-slate-400 mb-1">Status</p>
+        <p class="text-xl font-medium dark:text-white italic font-serif">Trending</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image block -->
+  <div class="w-full md:w-1/2 h-full relative">
+    <img
+      src="Home_images/Untitled-design-2.png"
+      alt="Fashion Trend"
+      class="w-full h-full object-cover"
+    />
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-white dark:from-[#0f0f0f] to-transparent md:opacity-100 opacity-30"></div>
+  </div>
+</section>
+
+
+
+
+<main class="max-w-[1280px] mx-auto w-full px-4 py-8 flex flex-col gap-12">
+
+<!-- SECTION 2 -->
+<section class="flex flex-col gap-6">
+<header class="mb-10 text-center">
+<p class="text-[10px] tracking-[0.3em] uppercase text-secondary font-semibold mb-4">The Red Carpet Edit</p>
+<h1 class="text-5xl md:text-7xl font-headline italic font-light text-on-surface mb-6">Trending Color's</h1>
+<div class="w-24 h-[1px] bg-outline-variant mx-auto opacity-40"></div>
+</header>
+
+<div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+<div class="flex flex-col gap-2">
+<div class="aspect-square w-full rounded-xl bg-[#F1F2F5] flex items-end p-4 border border-primary/20">
+<span class="text-[10px] font-bold text-slate-700">#F1F2F5</span>
+</div>
+<p class="text-sm font-bold">Cloud Dancer</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="aspect-square w-full rounded-xl bg-[#FD1F87] flex items-end p-4 border border-primary/20">
+<span class="text-[10px] font-bold text-slate-700">#FD1F87 </span>
+</div>
+<p class="text-sm font-bold">Fuchsia Pink</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="aspect-square w-full rounded-xl bg-[#A3E432] flex items-end p-4 border border-primary/20">
+<span class="text-[10px] font-bold text-slate-700">#A3E432</span>
+</div>
+<p class="text-sm font-bold">Lime Green</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="aspect-square w-full rounded-xl bg-[#002FA7] flex items-end p-4 border border-primary/20">
+<span class="text-[10px] font-bold text-slate-700">#002FA7 ( </span>
+</div>
+<p class="text-sm font-bold">Klein Blue</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="aspect-square w-full rounded-xl bg-[#1F51FF] flex items-end p-4 border border-primary/20">
+<span class="text-[10px] font-bold text-slate-700">#1F51FF</span>
+</div>
+<p class="text-sm font-bold">Power Blue</p>
+</div>
+</div>
+<a class="text-primary text-sm font-bold flex items-center gap-1 hover:underline" href="https://www.vogue.in/content/10-colour-trends-setting-the-tone-in-2026">Read the article <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</section>
+
+<!-- SECTION3 -->
+<section class="flex flex-col gap-6">
+<header class="mb-10 text-center">
+<p class="text-[10px] tracking-[0.3em] uppercase text-secondary font-semibold mb-4">The Red Carpet Edit</p>
+<h1 class="text-5xl md:text-7xl font-headline italic font-light text-on-surface mb-6">Popular Styles</h1>
+<div class="w-24 h-[1px] bg-outline-variant mx-auto opacity-40"></div>
+</header>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="flex flex-col gap-3 group">
+<div class="aspect-[3/4] rounded-xl bg-primary/20 overflow-hidden relative">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Streetwear style with baggy pants and oversized hoodie" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASK2rAqWGMKl75fTr6UopTG3pGiT7NLM13JGsS8KbiF--5tU3g9uHOgIP9NMMV7JlcPp04gm7wcgCWj6Wx9wGfSmXqr6v2LnZPi42abXZKji6A_1g7lYzdKdkvWzyc8WroZMd0DxyCP3iAe-1tjZSRQ-AC63FDfWYTP16VjDXB50tgaPd2k5tZnRaWzwOL1764VhrWO7woXqe5HwOUA8ReF49wlCCUEj7-X_dJOpt1QvioigICjFHjjAD9RY9Ds4oHT3zfxCVgPLk"/>
+<div class="absolute bottom-4 left-4">
+<span class="bg-white/90 px-3 py-1 rounded-full text-xs font-black text-slate-900 tracking-wider uppercase">Streetwear</span>
+</div>
+</div>
+<p class="text-slate-500 text-sm font-medium">9.2k Looks this week</p>
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="aspect-[3/4] rounded-xl bg-primary/20 overflow-hidden relative">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Minimalist fashion with neutral tones and clean lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrXoBwObBw8lSNPvI7IYl0GvWMDvhhNevYejO1Wh1x-ZHKO0zwSsi-qCe7L4UtYFiw2XCxIScH1grFPwPvZXXFgiQWuKNB6s0u6pgzyq51N4d-S9USDC8mHGvTvIAkLrINAnXApM5CrgRjDDRk4MQ0ZL2y_q6lXrJRrWZMcj3O02RsKesxj1vHsrMND5KnGcZUNpepyjRw4I8YfeE36pISkPzpersh8aEGEK0z7-hvQ9la5e-fkcgAQ6RR_SWwOyQkoAAxt9crMeA"/>
+<div class="absolute bottom-4 left-4">
+<span class="bg-white/90 px-3 py-1 rounded-full text-xs font-black text-slate-900 tracking-wider uppercase">Minimalist</span>
+</div>
+</div>
+<p class="text-slate-500 text-sm font-medium">12.5k Looks this week</p>
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="aspect-[3/4] rounded-xl bg-primary/20 overflow-hidden relative">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Formal chic attire with a modern twist blazer and accessories" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmU7J9Ui7fkYFpVdgL7-pMt23XyQpV3rBvQ9AiyWfgraobhEpYC6ziNROjldYL-mRQ9FEbq4VtDfsy_i01ROG5vqZF6cICpffRfPHDYTW8UNkkRtbsbCKPTTad-yfhupUoH_PL14MnW4_fTGoUJIe_0s8MGOspDZwXPZJhzg1RGZdySfVdby4o7upBAXlMmje0T7u6TRLpM3riQDRcd3ILF5TKWi5ps8SpBq9AxXoRRJ-OjBsUPxLJQHv6YGqTVbCEkiOX0fvtvZ8"/>
+<div class="absolute bottom-4 left-4">
+<span class="bg-white/90 px-3 py-1 rounded-full text-xs font-black text-slate-900 tracking-wider uppercase">Formal Chic</span>
+</div>
+</div>
+<p class="text-slate-500 text-sm font-medium">7.1k Looks this week</p>
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="aspect-[3/4] rounded-xl bg-primary/20 overflow-hidden relative">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Athleisure wear with yoga pants and stylish sports top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnti4_1AUyPvpZ3HSXl7cmKT418pujwyEdlVlVX6LU8Lurmm3OMvUeXQ0MQPOt9bVZD2Xh_kTZxgTqtj5Nj9077icL2kYJYQdD2F27L4PRvo8Dc_-aHiAfgf5luD6iKH0da1qjCrn63B5oBonldx7wdQW2VLe5FvrvOvKMjCv2PZGW1kaYn5p8bMttKgVfvm6JQ4HV--9HSLxksZkBcmcg_9nNw80oOXQMlUBTwcBosFljKUnHC5GmsZiRSfffLU-tWMYSPfRsL-U"/>
+<div class="absolute bottom-4 left-4">
+<span class="bg-white/90 px-3 py-1 rounded-full text-xs font-black text-slate-900 tracking-wider uppercase">Athleisure</span>
+</div>
+</div>
+<p class="text-slate-500 text-sm font-medium">15k Looks this week</p>
+</div>
+</div>
+
+
+<!-- SECTION 4 -->
+</section>
+<header class="mb-10 text-center">
+<p class="text-[10px] tracking-[0.3em] uppercase text-secondary font-semibold mb-4">The Red Carpet Edit</p>
+<h1 class="text-5xl md:text-7xl font-headline italic font-light text-on-surface mb-6">Celebrity Inspiration</h1>
+<div class="w-24 h-[1px] bg-outline-variant mx-auto opacity-40"></div>
+</header>
+<!-- Gallery Enclosure with Carousel -->
+<section class="bg-surface-container-lowest  p-8 md:p-16 relative group ring-2 ring-offset-4 ring-transparent" >
+<!-- Navigation Arrows -->
+<button class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 flex items-center justify-center bg-white/90 dark:bg-black/80  border-outline-variant/30 border border-outline-variant/30 hover:bg-white transition-all opacity-0 group-hover:opacity-100 shadow-sm" onclick="document.getElementById('carousel').scrollBy({left: -320, behavior: 'smooth'})">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 flex items-center justify-center bg-white/90 border  dark:bg-black/80  border-outline-variant/30 hover:bg-white transition-all opacity-0 group-hover:opacity-100 shadow-sm" onclick="document.getElementById('carousel').scrollBy({left: 320, behavior: 'smooth'})">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+<!-- Scrollable Content -->
+<div class="flex overflow-x-auto hide-scrollbar carousel-container gap-x-8 pb-4" id="carousel">
+<!-- Card 1: Zendaya -->
+<div class="carousel-item w-[300px]">
+<div class="aspect-[3/4] overflow-hidden bg-surface-container mb-6 relative">
+<img alt="High-fashion portrait" class="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700" src="https://www.instyle.com/thmb/aUMpj4BoRQOKI2J7vAelXQC0F1g=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Zendaya-Hotel-Roma-GettyImages-1497018141-3c4a6ecb43ba4a12be6e0f78b10b3003.jpeg"/>
+<div class="absolute inset-0 bg-black/5 pointer-events-none"></div>
+</div>
+<div class="text-center px-2">
+<h3 class="font-headline text-2xl mb-2">Zendaya</h3>
+<p class="text-[15px] tracking-widest uppercase text-primary mb-4 dark:text-white">Method Dressing Icon</p>
+<button onclick="window.open('https://www.instyle.com/zendaya-outfits-7971706', '_blank');" 
+    class="w-full py-3 text-[15px] tracking-[0.2em] font-bold uppercase 
+           bg-secondary text-on-secondary border border-secondary
+           transition-all duration-500
+           hover:bg-transparent hover:text-secondary dark:text-black">
+    Explore More
+</button>
+</div>
+</div>
+
+<!-- Card 2: Rihanna -->
+<div class="carousel-item w-[300px]">
+<div class="aspect-[3/4] overflow-hidden bg-surface-container mb-6 relative">
+<img alt="Luxury fashion" class="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700" src="https://assets.vogue.com/photos/6187f39056f3c900b54c9223/master/w_2048%2Cc_limit/GettyImages-1032947556.jpg"/>
+<button onclick="window.open('https://www.instyle.com/zendaya-outfits-7971706', '_blank');" 
+    class="w-full py-3 text-[15px] tracking-[0.2em] font-bold uppercase 
+           bg-secondary text-on-secondary border border-secondary
+           transition-all duration-500
+           hover:bg-transparent hover:text-secondary">
+    Explore More
+</button>
+<div class="absolute inset-0 bg-black/5 pointer-events-none"></div>
+</div>
+<div class="text-center px-2">
+<h3 class="font-headline text-2xl mb-2">Rihanna</h3>
+<p class="text-[15px] tracking-widest uppercase text-primary mb-4 dark:text-white">Avant-Garde Majesty</p>
+<button onclick="window.open('https://www.vogue.com/slideshow/rihanna-style-statement-looks', '_blank');" 
+    class="w-full py-3 text-[15px] tracking-[0.2em] font-bold uppercase 
+           bg-secondary text-on-secondary border border-secondary
+           transition-all duration-500
+           hover:bg-transparent hover:text-secondary dark:text-black">
+    Explore More
+</button>
+</div>
+</div>
+
+<!-- Card 3: Dua Lipa -->
+<div class="carousel-item w-[300px]">
+<div class="aspect-[3/4] overflow-hidden bg-surface-container mb-6 relative">
+<img alt="Contemporary fashion" class="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700" src="https://graziamagazine.com/wp-content/uploads/2019/11/GettyImages-1189826251.jpg"/>
+<div class="absolute inset-0 bg-black/5 pointer-events-none"></div>
+</div>
+<div class="text-center px-2">
+<h3 class="font-headline text-2xl mb-2">Dua Lipa</h3>
+<p class="text-[15px] tracking-widest uppercase text-primary mb-4 dark:text-white">Contemporary Sleek</p>
+<button onclick="window.open('https://graziamagazine.com/articles/dua-lipa-fashion-style-evolution/', '_blank');" 
+    class="w-full py-3 text-[15px] tracking-[0.2em] font-bold uppercase 
+           bg-secondary text-on-secondary border border-secondary
+           transition-all duration-500
+           hover:bg-transparent hover:text-secondary dark:text-black">
+    Explore More
+</button>
+</div>
+</div>
+<!-- Card 6: Bella Hadid -->
+<div class="carousel-item w-[300px]">
+<div class="aspect-[3/4] overflow-hidden bg-surface-container mb-6 relative">
+<img alt="Runway model" class="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700" src="https://graziamagazine.com/wp-content/uploads/2018/09/GettyImages-1029993924.jpg"/>
+<div class="absolute inset-0 bg-black/5 pointer-events-none"></div>
+</div>
+<div class="text-center px-2">
+<h3 class="font-headline text-2xl mb-2">Bella Hadid</h3>
+<p class="text-[15px] tracking-widest uppercase text-primary mb-4 dark:text-white">Off-Duty Archive</p>
+<button onclick="window.open('https://graziamagazine.com/me/articles/bella-hadid-fashion-style-evolution/', '_blank');" 
+    class="w-full py-3 text-[15px] tracking-[0.2em] font-bold uppercase 
+           bg-secondary text-on-secondary border border-secondary
+           transition-all duration-500
+           hover:bg-transparent hover:text-secondary dark:text-black">
+    Explore More
+</button>
+</div>
+</div>
+<!-- New Card 7: Margot Robbie -->
+<div class="carousel-item w-[300px]">
+<div class="aspect-[3/4] overflow-hidden bg-surface-container mb-6 relative">
+<img alt="Margot Robbie fashion" class="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700" src="https://hips.hearstapps.com/hmg-prod/images/margot-robbie-attends-warner-bros-pictures-and-mrc-presents-news-photo-1770316487.pjpeg?crop=1.00xw:0.915xh;0,0.0636xh"/>
+<div class="absolute inset-0 bg-black/5 pointer-events-none"></div>
+</div>
+<div class="text-center px-2">
+<h3 class="font-headline text-2xl mb-2">Margot Robbie</h3>
+<p class="text-[15px] tracking-widest uppercase text-primary mb-4 dark:text-white">Polished Glamour</p>
+<button onclick="window.open('https://www.harpersbazaar.com/celebrity/sports-athletes/g70257847/margot-robbie-wuthering-heights-press-tour-fashion-photos/', '_blank');" 
+    class="w-full py-3 text-[15px] tracking-[0.2em] font-bold uppercase 
+           bg-secondary text-on-secondary border border-secondary
+           transition-all duration-500
+           hover:bg-transparent hover:text-secondary dark:text-black">
+    Explore More
+</button>
+</div>
+</div>
+<!-- New Card 8: Anya Taylor-Joy -->
+<div class="carousel-item w-[300px]">
+<div class="aspect-[3/4] overflow-hidden bg-surface-container mb-6 relative">
+<img alt="Anya Taylor-Joy fashion" class="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700" src="https://hips.hearstapps.com/hmg-prod/images/anya-taylor-joy-cannes-2024-6645dc14a53cd.jpg?crop=1xw:1xh;center,top"/>
+<div class="absolute inset-0 bg-black/5 pointer-events-none"></div>
+</div>
+<div class="text-center px-2">
+<h3 class="font-headline text-2xl mb-2">Anya Taylor-Joy</h3>
+<p class="text-[15px] tracking-widest uppercase text-primary mb-4 dark:text-white">Ethereal Avant-Garde</p>
+<button onclick="window.open('https://www.elle.com/uk/fashion/celebrity-style/g36002544/anya-taylor-joy-style/', '_blank');" 
+    class="w-full py-3 text-[15px] tracking-[0.2em] font-bold uppercase 
+           bg-secondary text-on-secondary border border-secondary
+           transition-all duration-500
+           hover:bg-transparent hover:text-secondary dark:text-black">
+    Explore More
+</button>
+</div>
+</div>
+
+<!-- New Card 10: Florence Pugh -->
+<div class="carousel-item w-[300px]">
+<div class="aspect-[3/4] overflow-hidden bg-surface-container mb-6 relative">
+<img alt="Florence Pugh fashion" class="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700" src="https://www.copenhagenfashionsummit.com/wp-content/uploads/2025/12/Academy-Awards-Silver-Del-Core-Gown-March-2024-737x1024.png.webp"/>
+<div class="absolute inset-0 bg-black/5 pointer-events-none"></div>
+</div>
+<div class="text-center px-2">
+<h3 class="font-headline text-2xl mb-2">Florence Pugh</h3>
+<p class="text-[15px] tracking-widest uppercase text-primary mb-4 dark:text-white">Bold Silhouettes</p>
+<button onclick="window.open('https://www.copenhagenfashionsummit.com/florence-pughs-boldest-fashion-moments/', '_blank');" 
+    class="w-full py-3 text-[15px] tracking-[0.2em] font-bold uppercase 
+           bg-secondary text-on-secondary border border-secondary
+           transition-all duration-500
+           hover:bg-transparent hover:text-secondary dark:text-black">
+    Explore More
+</button>
+</div>
+</div>
+
+<!-- New Card 12: Jenna Ortega -->
+<div class="carousel-item w-[300px]">
+<div class="aspect-[3/4] overflow-hidden bg-surface-container mb-6 relative">
+<img alt="Jenna Ortega fashion" class="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700" src="https://graziamagazine.com/wp-content/uploads/2025/06/GettyImages-1471817519-scaled.jpg"/>
+<div class="absolute inset-0 bg-black/5 pointer-events-none"></div>
+</div>
+<div class="text-center px-2">
+<h3 class="font-headline text-2xl mb-2">Jenna Ortega</h3>
+<p class="text-[15px] tracking-widest uppercase text-primary mb-4 dark:text-white">Modern Gothic</p>
+<button onclick="window.open('https://graziamagazine.com/articles/jenna-ortega-style-evolution/', '_blank');" 
+    class="w-full py-3 text-[15px] tracking-[0.2em] font-bold uppercase 
+           bg-secondary text-on-secondary border border-secondary
+           transition-all duration-500
+           hover:bg-transparent hover:text-secondary dark:text-black">
+    Explore More
+</button>
+</div>
+</div>
+
+<!-- New Card 14: Emma Chamberlain -->
+<div class="carousel-item w-[300px]">
+<div class="aspect-[3/4] overflow-hidden bg-surface-container mb-6 relative">
+<img alt="Tracee Ellis Ross fashion" class="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700" src="https://wwd.com/wp-content/uploads/2025/04/emma-chamberlain-photosh.jpg?w=800"/>
+<div class="absolute inset-0 bg-black/5 pointer-events-none"></div>
+</div>
+<div class="text-center px-2">
+<h3 class="font-headline text-2xl mb-2">Emma Chamberlain</h3>
+<p class="text-[15px] tracking-widest uppercase text-primary mb-4 dark:text-white">High-Concept Chic</p>
+<button onclick="window.open('https://wwd.com/fashion-news/fashion-scoops/gallery/emma-chamberlain-style-photos-1237108910/the-2022-met-gala-celebrating-in-america-an-anthology-of-fashion-arrivals-153/', '_blank');" 
+    class="w-full py-3 text-[15px] tracking-[0.2em] font-bold uppercase 
+           bg-secondary text-on-secondary border border-secondary
+           transition-all duration-500
+           hover:bg-transparent hover:text-secondary dark:text-black">
+    Explore More
+</button>
+</div>
+</div>
+
+<!-- New Card 16: Tessa Thompson -->
+<div class="carousel-item w-[300px]">
+<div class="aspect-[3/4] overflow-hidden bg-surface-container mb-6 relative">
+<img alt="Tessa Thompson fashion" class="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700" src="https://media1.popsugar-assets.com/files/thumbor/VMVZ66Yuo1lmMU4-sJh9HE-bHAw=/fit-in/1584x2222/filters:format_auto():upscale()/2022/08/02/855/n/1922564/9feedf786f3582f3_GettyImages-1388225534.jpg"/>
+<div class="absolute inset-0 bg-black/5 pointer-events-none"></div>
+</div>
+<div class="text-center px-2">
+<h3 class="font-headline text-2xl mb-2">Tessa Thompson</h3>
+<p class="text-[15px] tracking-widest uppercase text-primary  dark:text-white mb-4">Experimental Icon</p>
+<button onclick="window.open('https://www.popsugar.com/fashion/tessa-thompson-style-48016247', '_blank');" 
+    class="w-full py-3 text-[15px] tracking-[0.2em] font-bold uppercase 
+           bg-secondary text-on-secondary border border-secondary
+           transition-all duration-500
+           hover:bg-transparent hover:text-secondary dark:text-black">
+    Explore More
+</button>
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- SECTION 5 -->
+<!-- Featured Designer Carousel -->
+<section class="relative w-full py-24 bg-white dark:bg-[#191919] overflow-hidden">
+    <header class="mb-10 text-center">
+<p class="text-[10px] tracking-[0.3em] uppercase text-secondary font-semibold mb-4">The Visionaries</p>
+<h1 class="text-5xl md:text-7xl font-headline italic font-light text-on-surface mb-6">Featured Designers</h1>
+<div class="w-24 h-[1px] bg-outline-variant mx-auto opacity-40"></div>
+</header>
+    
+
+    <div class="relative group">
+        <button class="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/90 dark:bg-black/80 border border-slate-200 dark:border-white/10 flex items-center justify-center shadow-xl opacity-0 group-hover:opacity-100 transition-opacity" 
+                onclick="document.getElementById('carousel-container').scrollBy({left: -400, behavior: 'smooth'})">
+            <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+        
+        <button class="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/90 dark:bg-black/80 border border-slate-200 dark:border-white/10 flex items-center justify-center shadow-xl opacity-0 group-hover:opacity-100 transition-opacity" 
+                onclick="document.getElementById('carousel-container').scrollBy({left: 400, behavior: 'smooth'})">
+            <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+
+        <div class="flex flex-nowrap gap-8 overflow-x-auto hide-scrollbar snap-x snap-mandatory scroll-smooth px-8 md:px-[10%]" id="carousel-container">
+            
+            <div class="flex-none w-[300px] md:w-[380px] shrink-0 snap-center">
+                <div class="bg-white dark:bg-[#111] border border-stone-100 dark:border-white/5 rounded-[2rem] p-6 hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
+                    <div class="aspect-[4/5] overflow-hidden rounded-2xl mb-6 bg-stone-50">
+                        <img src="https://www.luxurytribune.com/_next/image?url=https%3A%2F%2Fcontent.luxurytribune.com%2Fapp%2Fuploads%2F2024%2F10%2Fshutterstock_660911455-1.jpg&w=750&q=90" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="text-center flex-grow mb-6">
+                        <h3 class="font-bold text-lg tracking-wider uppercase dark:text-white">Giorgio Armani</h3>
+                        <p class="text-secondary text-xs leading-relaxed mt-2 dark:text-stone-400">Renowned for sophisticated tailoring, luxury, and neutral tones in menswear and womenswear.</p>
+                    </div>
+                    <button onclick="window.open('https://www.armani.com/', '_blank');" class="w-full py-3 border border-stone-200 dark:border-white/10 rounded-lg text-[10px] tracking-[0.2em] uppercase hover:bg-stone-900 hover:text-white dark:hover:bg-[#e0c47a] dark:hover:text-black transition-all">Explore Collection</button>
+                </div>
+            </div>
+
+            <div class="flex-none w-[300px] md:w-[380px] shrink-0 snap-center">
+                <div class="bg-white dark:bg-[#111] border border-stone-100 dark:border-white/5 rounded-[2rem] p-6 hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
+                    <div class="aspect-[4/5] overflow-hidden rounded-2xl mb-6 bg-stone-50">
+                        <img src="https://cfda.com/wp-content/uploads/2016/09/Ralph-Lauren-Headshot_0.jpg" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="text-center flex-grow mb-6">
+                        <h3 class="font-bold text-lg tracking-wider uppercase dark:text-white">Ralph Lauren</h3>
+                        <p class="text-secondary text-xs leading-relaxed mt-2 dark:text-stone-400">The king of American preppy style, famous for Polo Ralph Lauren and classic, refined clothing.</p>
+                    </div>
+                    <button onclick="window.open('https://www.ralphlauren.global/', '_blank');" class="w-full py-3 border border-stone-200 dark:border-white/10 rounded-lg text-[10px] tracking-[0.2em] uppercase hover:bg-stone-900 hover:text-white dark:hover:bg-[#e0c47a] dark:hover:text-black transition-all">Explore Collection</button>
+                </div>
+            </div>
+
+            <div class="flex-none w-[300px] md:w-[380px] shrink-0 snap-center">
+                <div class="bg-white dark:bg-[#111] border border-stone-100 dark:border-white/5 rounded-[2rem] p-6 hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
+                    <div class="aspect-[4/5] overflow-hidden rounded-2xl mb-6 bg-stone-50">
+                        <img src="https://i.pinimg.com/736x/e9/f1/6a/e9f16a1f5e8d49ad77e82de29e9ed43b.jpg" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="text-center flex-grow mb-6">
+                        <h3 class="font-bold text-lg tracking-wider uppercase dark:text-white">Yves Saint Laurent</h3>
+                        <p class="text-secondary text-xs leading-relaxed mt-2 dark:text-stone-400">A fashion icon known for breaking gender norms, popularizing women's tuxedo suits.</p>
+                    </div>
+                    <button onclick="window.open('https://www.ysl.com/', '_blank');" class="w-full py-3 border border-stone-200 dark:border-white/10 rounded-lg text-[10px] tracking-[0.2em] uppercase hover:bg-stone-900 hover:text-white dark:hover:bg-[#e0c47a] dark:hover:text-black transition-all">Explore Collection</button>
+                </div>
+            </div>
+
+            <div class="flex-none w-[300px] md:w-[380px] shrink-0 snap-center">
+                <div class="bg-white dark:bg-[#111] border border-stone-100 dark:border-white/5 rounded-[2rem] p-6 hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
+                    <div class="aspect-[4/5] overflow-hidden rounded-2xl mb-6 bg-stone-50">
+                        <img src="https://www.sleek-mag.com/wp-content/uploads/2016/08/TomFord-1.jpg" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="text-center flex-grow mb-6">
+                        <h3 class="font-bold text-lg tracking-wider uppercase dark:text-white">Tom Ford</h3>
+                        <p class="text-secondary text-xs leading-relaxed mt-2 dark:text-stone-400">Master of modern luxury and provocative, chic designs for both his own brand and Gucci.</p>
+                    </div>
+                    <button onclick="window.open('https://www.tomfordfashion.com/', '_blank');" class="w-full py-3 border border-stone-200 dark:border-white/10 rounded-lg text-[10px] tracking-[0.2em] uppercase hover:bg-stone-900 hover:text-white dark:hover:bg-[#e0c47a] dark:hover:text-black transition-all">Explore Collection</button>
+                </div>
+            </div>
+
+            <div class="flex-none w-[300px] md:w-[380px] shrink-0 snap-center">
+                <div class="bg-white dark:bg-[#111] border border-stone-100 dark:border-white/5 rounded-[2rem] p-6 hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
+                    <div class="aspect-[4/5] overflow-hidden rounded-2xl mb-6 bg-stone-50">
+                        <img src="https://thehula.com/cdn/shop/articles/300x300-px-miuccia-article-wordpress-cover_e9ddcffa-6bbc-4a7b-bd3f-e47fc8a6450a_300x.jpg?v=1672897592" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="text-center flex-grow mb-6">
+                        <h3 class="font-bold text-lg tracking-wider uppercase dark:text-white">Miuccia Prada</h3>
+                        <p class="text-secondary text-xs leading-relaxed mt-2 dark:text-stone-400">Known for her intellectual approach, turning Prada into a powerhouse of innovation.</p>
+                    </div>
+                    <button onclick="window.open('https://www.prada.com/', '_blank');" class="w-full py-3 border border-stone-200 dark:border-white/10 rounded-lg text-[10px] tracking-[0.2em] uppercase hover:bg-stone-900 hover:text-white dark:hover:bg-[#e0c47a] dark:hover:text-black transition-all">Explore Collection</button>
+                </div>
+            </div>
+
+            <div class="flex-none w-[300px] md:w-[380px] shrink-0 snap-center">
+                <div class="bg-white dark:bg-[#111] border border-stone-100 dark:border-white/5 rounded-[2rem] p-6 hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
+                    <div class="aspect-[4/5] overflow-hidden rounded-2xl mb-6 bg-stone-50">
+                        <img src="https://i.pinimg.com/736x/b4/f1/98/b4f19859b77935a27c0fb9d0ed97216c.jpg" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="text-center flex-grow mb-6">
+                        <h3 class="font-bold text-lg tracking-wider uppercase dark:text-white">Coco Chanel</h3>
+                        <p class="text-secondary text-xs leading-relaxed mt-2 dark:text-stone-400">Revolutionized women's fashion with timeless designs, including the little black dress.</p>
+                    </div>
+                    <button onclick="window.open('https://www.chanel.com/', '_blank');" class="w-full py-3 border border-stone-200 dark:border-white/10 rounded-lg text-[10px] tracking-[0.2em] uppercase hover:bg-stone-900 hover:text-white dark:hover:bg-[#e0c47a] dark:hover:text-black transition-all">Explore Collection</button>
+                </div>
+            </div>
+
+            <div class="flex-none w-[300px] md:w-[380px] shrink-0 snap-center">
+                <div class="bg-white dark:bg-[#111] border border-stone-100 dark:border-white/5 rounded-[2rem] p-6 hover:shadow-2xl transition-all duration-500 flex flex-col h-full">
+                    <div class="aspect-[4/5] overflow-hidden rounded-2xl mb-6 bg-stone-50">
+                        <img src="http://www.eurochannel.com/images/stories/Gaultier_1.jpg" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="text-center flex-grow mb-6">
+                        <h3 class="font-bold text-lg tracking-wider uppercase dark:text-white">J.P. Gaultier</h3>
+                        <p class="text-secondary text-xs leading-relaxed mt-2 dark:text-stone-400">Boundless creativity, corsetry, and the spirit of Parisian rebellion.</p>
+                    </div>
+                    <button onclick="window.open('https://www.jeanpaulgaultier.com/', '_blank');" class="w-full py-3 border border-stone-200 dark:border-white/10 rounded-lg text-[10px] tracking-[0.2em] uppercase hover:bg-stone-900 hover:text-white dark:hover:bg-[#e0c47a] dark:hover:text-black transition-all">Explore Collection</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+</style>
+
+</main>
+
+<div class="h-20"></div>
+
+<!-- Footer -->
+<footer class="bg-primary text-background-light py-12 px-6 md:px-20 mt-12">
+    <div class="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-white/10 pb-12 mb-8">
+        
+        <div class="col-span-1 flex flex-col gap-4">
+            <div class="flex items-center gap-3">
+                <img src="Home_images/footer.png" alt="logo" class="h-30 w-auto object-contain">
+            </div>
+            <p class="text-sm text-white/70 font-medium leading-relaxed">
+                Your AI-powered style companion for the modern age.
+            </p>
+            <div class="flex gap-4 mt-2">
+                <a class="size-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-background-light hover:text-primary transition-all" href="#">
+                    <span class="material-symbols-outlined text-lg">public</span>
+                </a>
+                <a class="size-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-background-light hover:text-primary transition-all" href="#">
+                    <span class="material-symbols-outlined text-lg">share</span>
+                </a>
+                <a class="size-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-background-light hover:text-primary transition-all" href="#">
+                    <span class="material-symbols-outlined text-lg">brand_awareness</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-4">
+            <h4 class="font-black text-xs uppercase tracking-widest text-white/50">Navigation</h4>
+            <ul class="flex flex-col gap-2 text-sm font-bold">
+                <li><a class="hover:text-white transition-colors" href="#">Home</a></li>
+                <li><a class="hover:text-white transition-colors" href="#">Outfit AI</a></li>
+                <li><a class="hover:text-white transition-colors" href="#">Color Match</a></li>
+                <li><a class="hover:text-white transition-colors" href="#">Trends</a></li>
+            </ul>
+        </div>
+
+        <div class="flex flex-col gap-4">
+            <h4 class="font-black text-xs uppercase tracking-widest text-white/50">Community</h4>
+            <ul class="flex flex-col gap-2 text-sm font-bold">
+                <li><a class="hover:text-white transition-colors" href="#">Discord</a></li>
+                <li><a class="hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+                <li><a class="hover:text-white transition-colors" href="#">Terms</a></li>
+            </ul>
+        </div>
+
+        <div class="flex flex-col gap-4">
+            <h4 class="font-black text-xs uppercase tracking-widest text-white/50">Newsletter</h4>
+            <p class="text-xs text-white/70 font-medium">Get trend alerts weekly.</p>
+            <div class="flex gap-2">
+                <input class="bg-white/10 border-none rounded-lg py-2.5 px-3 text-sm placeholder:text-white/40 focus:ring-1 focus:ring-white w-full text-white" placeholder="Email address" type="email"/>
+                <button class="bg-background-light px-3 py-2 rounded-lg text-primary hover:bg-white transition-all material-symbols-outlined">send</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-white/40 text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold">
+        <p>Project Info • StyleSync AI Platform</p>
+        <p>Shruti, Vanshika, Yuvika • © 2026</p>
+    </div>
+</footer>
+
+<script src="common.js"></script>
+<script>
+    const container = document.getElementById('carousel-container');
+    const dots = document.querySelectorAll('.flex.justify-center.gap-3.mt-8 > div');
+    
+    container.addEventListener('scroll', () => {
+        const scrollPercentage = container.scrollLeft / (container.scrollWidth - container.clientWidth);
+        const activeIndex = Math.min(dots.length - 1, Math.floor(scrollPercentage * dots.length));
+        
+        dots.forEach((dot, index) => {
+            if (index === activeIndex) {
+                dot.className = 'w-8 h-1 bg-tertiary-container rounded-full transition-all duration-300';
+            } else {
+                dot.className = 'w-2 h-1 bg-stone-200 rounded-full transition-all duration-300';
+            }
+        });
+    });
+
+
+// ── Auth State ────────────────────────────────────────────────────────────
+function checkAuthState() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const loginBtn = document.getElementById('login-btn');
+    const userProfile = document.getElementById('user-profile');
+    if (isLoggedIn && loginBtn && userProfile) {
+        const name = localStorage.getItem('userName') || 'Member';
+        const role = localStorage.getItem('userRole') || 'Member';
+        document.getElementById('user-name').textContent = name;
+        document.getElementById('user-role').textContent = role;
+        const initials = name.split(' ').map(w => w[0]).join('').slice(0,2).toUpperCase();
+        document.getElementById('avatar-initials').textContent = initials;
+        loginBtn.classList.add('hidden');
+        userProfile.classList.remove('hidden');
+        userProfile.classList.add('flex');
+    } else {
+        if (loginBtn) loginBtn.classList.remove('hidden');
+        if (userProfile) { userProfile.classList.add('hidden'); userProfile.classList.remove('flex'); }
+    }
+}
+
+function handleLogout() {
+    localStorage.clear();
+    location.reload();
+}
+
+// ── Modal open/close ──────────────────────────────────────────────────────
+function openLogin() {
+    const modal = document.getElementById('login-modal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+    switchAuthTab('login');
+}
+
+function closeLogin() {
+    const modal = document.getElementById('login-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+    }
+}
+
+// ── Tab switcher ──────────────────────────────────────────────────────────
+function switchAuthTab(tab) {
+    const loginPanel = document.getElementById('auth-panel-login');
+    const regPanel   = document.getElementById('auth-panel-register');
+    const loginTab   = document.getElementById('auth-tab-login');
+    const regTab     = document.getElementById('auth-tab-register');
+    if (tab === 'login') {
+        loginPanel.style.display = ''; regPanel.style.display = 'none';
+        loginTab.style.color = '#c9a96e'; loginTab.style.borderBottomColor = '#c9a96e';
+        regTab.style.color   = '#5a4a3a'; regTab.style.borderBottomColor   = 'transparent';
+    } else {
+        loginPanel.style.display = 'none'; regPanel.style.display = '';
+        regTab.style.color   = '#c9a96e'; regTab.style.borderBottomColor   = '#c9a96e';
+        loginTab.style.color = '#5a4a3a'; loginTab.style.borderBottomColor = 'transparent';
+    }
+}
+
+// ── Toast ─────────────────────────────────────────────────────────────────
+function showAuthToast(msg) {
+    const t = document.getElementById('auth-toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ── Password toggle ───────────────────────────────────────────────────────
+function authTogglePass(inputId, btnId) {
+    const inp = document.getElementById(inputId);
+    const btn = document.getElementById(btnId);
+    if (inp.type === 'password') { inp.type = 'text';     btn.textContent = 'Hide'; }
+    else                         { inp.type = 'password'; btn.textContent = 'Show'; }
+}
+
+// ── Sign In ───────────────────────────────────────────────────────────────
+function handleSignIn() {
+    const email    = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value;
+    if (!email || !password) { showAuthToast('Please fill in all fields.'); return; }
+
+    const btn = document.querySelector('#auth-panel-login .auth-btn-primary');
+    btn.innerHTML = '<span>Authenticating…</span>'; btn.disabled = true;
+
+    setTimeout(() => {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userName',   email.split('@')[0]);
+        localStorage.setItem('userRole',   'Pro Member');
+        btn.innerHTML = '<span>Sign In</span>'; btn.disabled = false;
+        showAuthToast('Welcome back!');
+        setTimeout(() => { closeLogin(); checkAuthState(); }, 800);
+    }, 1200);
+}
+
+// ── Register ──────────────────────────────────────────────────────────────
+function handleRegister() {
+    const username = document.getElementById('reg-username').value.trim();
+    const password = document.getElementById('reg-password').value;
+    const confirm  = document.getElementById('reg-confirm').value;
+    if (!username)              { showAuthToast('Please enter a username or email.'); return; }
+    if (!password)              { showAuthToast('Please enter a password.'); return; }
+    if (password.length < 6)   { showAuthToast('Password must be at least 6 characters.'); return; }
+    if (password !== confirm)  { showAuthToast('Passwords do not match.'); return; }
+
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('userName',   username.split('@')[0]);
+    localStorage.setItem('userRole',   'New Member');
+    showAuthToast('Welcome to the Atelier! Account created.');
+    setTimeout(() => { closeLogin(); checkAuthState(); }, 1200);
+}
+
+// ── Profile dropdown ──────────────────────────────────────────────────────
+function toggleProfileMenu() {
+    document.getElementById('profile-menu')?.classList.toggle('hidden');
+}
+function closeProfileMenu() {
+    document.getElementById('profile-menu')?.classList.add('hidden');
+}
+document.addEventListener('click', (e) => {
+    const avatarBtn = document.getElementById('avatar-btn');
+    const menu      = document.getElementById('profile-menu');
+    if (menu && avatarBtn && !avatarBtn.contains(e.target) && !menu.contains(e.target)) closeProfileMenu();
+});
+
+// ── Init ──────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', checkAuthState);
+
+</script>
+
+</div>
+</body></html>
