@@ -20,7 +20,7 @@ const outfitDatabase = {
         },
         formal: {
             title: "Summer Executive",
-            img: "color/o2.png",
+            img: "o2.png",
             base: "Lightweight Cotton Blazer",
             bottom: "Tailored Trousers",
             footwear: "Leather Loafers",
@@ -38,7 +38,7 @@ const outfitDatabase = {
         },
         date: {
             title: "Golden Hour Glow",
-            img: "color/o1.png", 
+            img: "o1.png", 
             base: "Satin Slip Dress",
             bottom: "None",
             footwear: "Mules",
@@ -85,7 +85,7 @@ const outfitDatabase = {
         },
         date: {
             title: "Fireside Romance",
-            img: "color/o3.png",
+            img: "o3.png",
             base: "Fitted Cashmere Sweater",
             bottom: "Satin Midi Skirt",
             footwear: "Knee-High Boots",
@@ -123,7 +123,7 @@ const outfitDatabase = {
         },
         casual: {
             title: "Overcast Comfort",
-            img: "color/o6.png",
+            img: "o6.png",
             base: "Lightweight Knit Pullover",
             bottom: "Nylon Cargo Pants",
             footwear: "Chelsea Rain Boots",
@@ -161,7 +161,7 @@ const outfitDatabase = {
         },
         formal: {
             title: "Spring Conference",
-            img: "color/o4.png",
+            img: "o4.png",
             base: "Pastel Power Blazer",
             bottom: "Matching Trousers",
             footwear: "Nude Pumps",
